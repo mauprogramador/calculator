@@ -12,14 +12,17 @@ import org.springframework.web.context.request.WebRequest;
 import br.edu.ifms.calculator.exception.ExceptionResponse;
 import br.edu.ifms.calculator.exception.InvalidValueException;
 
+
 @RestController
 @ControllerAdvice
 public class ResponseEntityExceptionHandler {
+
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception exception, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 
     @ExceptionHandler(InvalidValueException.class)
     public final ResponseEntity<ExceptionResponse> handleInvalidValueExceptions(Exception exception, WebRequest request) {
@@ -27,8 +30,16 @@ public class ResponseEntityExceptionHandler {
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
+
     @ExceptionHandler(InternalError.class)
     public final ResponseEntity<ExceptionResponse> handleInternalErrorExceptions(Exception exception, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+
+    @ExceptionHandler(ArithmeticException.class)
+    public final ResponseEntity<ExceptionResponse> handleArithmeticExceptions(Exception exception, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }

@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class InvalidValueException extends RuntimeException {
+public class ArithmeticException extends RuntimeException {
 
-    public InvalidValueException(String message) {
+    public ArithmeticException(String message) {
         super(message);
     }   
 }

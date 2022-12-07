@@ -1,10 +1,11 @@
 package br.edu.ifms.calculator.model;
 
-public class CalculatorModel {
+public class SumNumbersModel {
+
     private String num1;
     private String num2;
 
-    public CalculatorModel() {}
+    public SumNumbersModel() {}
 
 
     public String getNum1() {

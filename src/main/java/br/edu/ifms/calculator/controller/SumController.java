@@ -6,17 +6,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.edu.ifms.calculator.exception.InvalidValueException;
-import br.edu.ifms.calculator.service.CalculatorService;
+import br.edu.ifms.calculator.service.SumService;
 
 
 @RestController
-@RequestMapping(value = "/calculator")
-public class CalculatorController {
-    private final CalculatorService calculatorService;
+@RequestMapping(value = "/sum")
+public class SumController {
+    private final SumService sumService;
 
-    public CalculatorController(CalculatorService calculatorService) {
-        this.calculatorService = calculatorService;
+    public SumController(SumService sumService) {
+        this.sumService = sumService;
     }
 
 
@@ -28,10 +27,13 @@ public class CalculatorController {
             newNum1 = Double.parseDouble(num1);
             newNum2 = Double.parseDouble(num2);
         } catch (NumberFormatException nfe) {
-            throw new InvalidValueException("Invalid value! the parameters must be numbers");
+            throw new ArithmeticException("Invalid value! the parameters must be numbers");
         }
-        Double result = this.calculatorService.sum(newNum1, newNum2);
+        Double result = this.sumService.sum(newNum1, newNum2);
         return ResponseEntity.ok(result);
     }
 }
 
+
+
+ 

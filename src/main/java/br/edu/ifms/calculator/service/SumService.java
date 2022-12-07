@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class CalculatorService {
+public class SumService {
     
     public Double sum(Double n1, Double n2) {
         try {
