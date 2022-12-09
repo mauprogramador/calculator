@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import br.edu.ifms.calculator.exception.ExceptionResponse;
-import br.edu.ifms.calculator.exception.InvalidValueException;
+import br.edu.ifms.calculator.exception.InternalFailProcessingException;
 
 
 @RestController
@@ -24,22 +24,15 @@ public class ResponseEntityExceptionHandler {
     }
 
 
-    @ExceptionHandler(InvalidValueException.class)
-    public final ResponseEntity<ExceptionResponse> handleInvalidValueExceptions(Exception exception, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
-    }
-
-
-    @ExceptionHandler(InternalError.class)
-    public final ResponseEntity<ExceptionResponse> handleInternalErrorExceptions(Exception exception, WebRequest request) {
-        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
-        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
-    }
-
-
     @ExceptionHandler(ArithmeticException.class)
     public final ResponseEntity<ExceptionResponse> handleArithmeticExceptions(Exception exception, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+
+    @ExceptionHandler(InternalFailProcessingException.class)
+    public final ResponseEntity<ExceptionResponse> handleInternalFailProcessingExceptions(Exception exception, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), exception.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
     }

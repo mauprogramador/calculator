@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class InvalidValueException extends RuntimeException {
+public class InternalFailProcessingException extends RuntimeException {
 
-    public InvalidValueException(String message) {
+    public InternalFailProcessingException(String message) {
         super(message);
     }   
 }

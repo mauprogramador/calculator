@@ -2,6 +2,8 @@ package br.edu.ifms.calculator.service;
 
 import org.springframework.stereotype.Service;
 
+import br.edu.ifms.calculator.exception.InternalFailProcessingException;
+
 
 @Service
 public class CalculatorService {
@@ -10,7 +12,7 @@ public class CalculatorService {
         try {
             return n1 + n2;
         } catch (Exception e) {
-            throw new InternalError("Unexpected error! sum operation cannot be calculated");
+            throw new InternalFailProcessingException("Unexpected error! sum operation cannot be calculated");
         }
     }
 }
