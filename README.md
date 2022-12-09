@@ -47,7 +47,9 @@ Estender as funcionalidades da calculadora do exercício anterior, devolvendo um
 
 ## Evidências
 
-Prints das requisições
+Prints das requisições, mostrando a **URL**, **Request Body** (POST) e **Response**. <br>
+Requisições feitas na Extensão **ThunderClient** do VSCode com a aplicação **SpringBoot** executando. <br>
+Para cada requisição há dois prints, um de sucesso exibindo o resultado, e outro de falha exibindo o Response com a mensagem da Exceção.
 
 ```bash
 # Imagens:
